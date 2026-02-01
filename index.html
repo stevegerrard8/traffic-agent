@@ -2,37 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Traffic Agent – Crash Analytics SaaS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>TrafficData – Accident Intelligence Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="landing">
+<body>
 
-<div class="landing-wrapper">
-  <div class="landing-left">
-    <h1>Traffic Agent</h1>
-    <p class="subtitle">
-      AI-powered crash analytics for cities, insurers and researchers.
+<header class="navbar">
+  <div class="logo">Traffic<span>Data</span></div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#usecases">Use Cases</a>
+    <a href="login.html" class="btn">Demo Login</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Traffic Accident Data,<br>Turned Into Intelligence</h1>
+    <p>
+      A data-driven SaaS platform for analyzing, visualizing and exporting
+      traffic accident statistics for governments, researchers and insurers.
     </p>
-
-    <ul class="features">
-      <li>📊 Nationwide accident insights</li>
-      <li>🗺️ High-risk zone detection</li>
-      <li>📈 Time & severity analytics</li>
-      <li>🏛️ Built for public & private sector</li>
-    </ul>
+    <a href="login.html" class="btn big">Try Demo</a>
   </div>
-
-  <div class="landing-right">
-    <div class="login-box">
-      <h2>Login</h2>
-      <p class="small">Demo access – no password required</p>
-
-      <button onclick="demoLogin()">Demo Login</button>
+  <div class="hero-visual">
+    <div class="glass-card">
+      <h3>Live Insights</h3>
+      <p>Risk zones · Trends · Fatality ratios</p>
     </div>
   </div>
-</div>
+</section>
 
-<script src="assets/app.js"></script>
+<section id="features" class="section">
+  <h2>Core Features</h2>
+  <div class="grid">
+    <div class="card">📊 Interactive Dashboards</div>
+    <div class="card">🗺️ Location-based Analysis</div>
+    <div class="card">📁 Open Data Ready</div>
+    <div class="card">📤 CSV / API Export</div>
+  </div>
+</section>
+
+<section id="usecases" class="section dark">
+  <h2>Who Is It For?</h2>
+  <div class="grid">
+    <div class="card">Public Institutions</div>
+    <div class="card">Insurance Companies</div>
+    <div class="card">Researchers & Media</div>
+    <div class="card">Smart City Projects</div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 TrafficData — Open & Transparent Data
+</footer>
+
 </body>
 </html>
