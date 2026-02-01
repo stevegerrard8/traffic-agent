@@ -8,97 +8,55 @@
     <style>
         :root { --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #64748b; --dark: #0f172a; --light: #f8fafc; --white: #ffffff; --transition: all 0.3s ease; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        
+        body { background-color: var(--light); color: var(--dark); }
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--dark); } .logo span { color: var(--primary); }
-        nav a { text-decoration: none; color: var(--secondary); margin-left: 2rem; font-weight: 500; transition: var(--transition); }
-        
+        nav { display: flex; align-items: center; gap: 2rem; }
+        nav a { text-decoration: none; color: var(--secondary); font-weight: 500; transition: var(--transition); }
         .pricing-header { padding: 10rem 8% 4rem; text-align: center; }
         .pricing-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
-        .pricing-header p { color: var(--secondary); font-size: 1.2rem; }
-
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 0 8% 6rem; max-width: 1200px; margin: 0 auto; }
-        
-        .pricing-card { background: var(--white); padding: 3rem 2rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); display: flex; flex-direction: column; position: relative; }
+        .pricing-card { background: var(--white); padding: 3rem 2.5rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; display: flex; flex-direction: column; position: relative; }
         .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--primary); }
-        
-        /* Popüler Planı Öne Çıkarma */
-        .popular { border: 2px solid var(--primary); transform: scale(1.05); }
-        .popular:hover { transform: translateY(-10px) scale(1.05); }
-        .badge { position: absolute; top: 1.5rem; right: 1.5rem; background: var(--primary); color: white; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
-
-        .plan-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; }
-        .price { font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; }
-        .price span { font-size: 1rem; color: var(--secondary); font-weight: 400; }
-        
+        .popular { border: 2px solid var(--primary); }
+        .badge { position: absolute; top: 1.5rem; right: 1.5rem; background: var(--primary); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+        .price { font-size: 3rem; font-weight: 800; margin: 1.5rem 0; }
         .features-list { list-style: none; margin-bottom: 2.5rem; flex-grow: 1; }
-        .features-list li { margin-bottom: 0.8rem; color: var(--secondary); display: flex; align-items: center; gap: 0.5rem; }
-        .features-list li::before { content: '✓'; color: var(--primary); font-weight: 700; }
-
-        .btn { background: var(--dark); color: white; text-align: center; padding: 1rem; border-radius: 12px; text-decoration: none; font-weight: 600; transition: var(--transition); }
+        .features-list li { margin-bottom: 1rem; color: var(--secondary); display: flex; gap: 0.5rem; }
+        .btn { background: var(--dark); color: white; text-align: center; padding: 1rem; border-radius: 12px; text-decoration: none; font-weight: 600; }
         .btn.primary { background: var(--primary); }
-        .btn:hover { opacity: 0.9; }
-
-        @media (max-width: 768px) { .popular { transform: scale(1); } .popular:hover { transform: translateY(-10px); } }
     </style>
 </head>
 <body>
-
-<header class="navbar">
-    <a href="index.html" class="logo">Traffic<span>Data</span></a>
-    <nav>
-        <a href="index.html#features">Features</a>
-        <a href="pricing.html" style="color: var(--primary);">Pricing</a>
-        <a href="dashboard.html" style="background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px;">Demo Login</a>
-    </nav>
-</header>
-
-<div class="pricing-header">
-    <h1>Simple, Transparent Pricing</h1>
-    <p>Choose the plan that best fits your data needs.</p>
-</div>
-
-<div class="pricing-grid">
-    <div class="pricing-card">
-        <div class="plan-name">Starter</div>
-        <div class="price">$0<span>/mo</span></div>
-        <ul class="features-list">
-            <li>Standard Dashboards</li>
-            <li>Limited CSV Export</li>
-            <li>1 User Access</li>
-            <li>Community Support</li>
-        </ul>
-        <a href="dashboard.html" class="btn">Get Started</a>
+    <header class="navbar">
+        <a href="index.html" class="logo">Traffic<span>Data</span></a>
+        <nav>
+            <a href="index.html#features">Features</a>
+            <a href="pricing.html" style="color: var(--primary);">Pricing</a>
+            <a href="dashboard.html" style="background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none;">Demo Login</a>
+        </nav>
+    </header>
+    <div class="pricing-header">
+        <h1>Plans for Every Scale</h1>
+        <p>From individual researchers to government institutions.</p>
     </div>
-
-    <div class="pricing-card popular">
-        <div class="badge">Most Popular</div>
-        <div class="plan-name">Professional</div>
-        <div class="price">$49<span>/mo</span></div>
-        <ul class="features-list">
-            <li>Advanced Heatmaps</li>
-            <li>Unlimited API Access</li>
-            <li>5 Team Members</li>
-            <li>Priority Email Support</li>
-            <li>Custom Reports</li>
-        </ul>
-        <a href="dashboard.html" class="btn primary">Start Free Trial</a>
+    <div class="pricing-grid">
+        <div class="pricing-card">
+            <h3>Starter</h3><div class="price">$0</div>
+            <ul class="features-list"><li>✓ Basic Analytics</li><li>✓ CSV Export</li><li>✓ 1 User Access</li></ul>
+            <a href="dashboard.html" class="btn">Try for Free</a>
+        </div>
+        <div class="pricing-card popular">
+            <div class="badge">Most Popular</div>
+            <h3>Professional</h3><div class="price">$49</div>
+            <ul class="features-list"><li>✓ Advanced Heatmaps</li><li>✓ API Integration</li><li>✓ 5 Team Members</li><li>✓ Priority Support</li></ul>
+            <a href="dashboard.html" class="btn primary">Start Free Trial</a>
+        </div>
+        <div class="pricing-card">
+            <h3>Enterprise</h3><div class="price">Custom</div>
+            <ul class="features-list"><li>✓ Predictive Modeling</li><li>✓ On-premise Install</li><li>✓ Unlimited Users</li><li>✓ 24/7 Support</li></ul>
+            <a href="mailto:info@trafficdata.com" class="btn">Contact Sales</a>
+        </div>
     </div>
-
-    <div class="pricing-card">
-        <div class="plan-name">Government</div>
-        <div class="price">Custom</div>
-        <ul class="features-list">
-            <li>Full City Intelligence</li>
-            <li>Predictive AI Models</li>
-            <li>Unlimited Users</li>
-            <li>24/7 Phone Support</li>
-            <li>On-premise Deployment</li>
-        </ul>
-        <a href="mailto:contact@trafficdata.com" class="btn">Contact Sales</a>
-    </div>
-</div>
-
 </body>
 </html>
