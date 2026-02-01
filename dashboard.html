@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Traffic Agent – Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="app-body">
+
+<div class="app">
+
+  <aside class="sidebar">
+    <h2>🚦 Traffic Agent</h2>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>Accidents</a>
+      <a>Analytics</a>
+      <a>Pricing</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="header">
+      <h1>Crash Analytics Dashboard</h1>
+      <button class="logout" onclick="logout()">Logout</button>
+    </header>
+
+    <section class="metrics">
+      <div class="card">
+        <h3>Total Accidents</h3>
+        <p>12,482</p>
+      </div>
+      <div class="card">
+        <h3>Fatal Crashes</h3>
+        <p>1,034</p>
+      </div>
+      <div class="card">
+        <h3>High Risk Zones</h3>
+        <p>87</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accidents by Month</h2>
+      <canvas id="accidentChart"></canvas>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
