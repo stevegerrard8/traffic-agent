@@ -1,98 +1,64 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Traffic Accidents SaaS</title>
+  <meta charset="UTF-8" />
+  <title>Traffic Agent – Crash Analytics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <style>
-    body { margin:0; font-family:Arial; background:#0f172a; color:#e5e7eb; }
-    .hidden { display:none; }
-    button { padding:8px 12px; cursor:pointer; }
-    .card { background:#111827; padding:15px; border-radius:8px; margin-bottom:15px; }
-    #map { height:260px; }
-  </style>
 </head>
 <body>
 
-<div id="login">
-  <h2>Login</h2>
+<!-- LOGIN -->
+<div id="login-screen" class="login">
+  <h1>Traffic Agent</h1>
+  <p>Crash Analytics SaaS</p>
   <button onclick="login()">Demo Login</button>
 </div>
 
-<div id="app" class="hidden">
-  <h1>Dashboard</h1>
+<!-- APP -->
+<div id="app-screen" class="app hidden">
 
-  <div class="card">
-    <canvas id="chart"></canvas>
-  </div>
+  <aside class="sidebar">
+    <h2>🚦 Traffic Agent</h2>
+    <nav>
+      <a class="active">Dashboard</a>
+      <a>Accidents</a>
+      <a>Analytics</a>
+      <a>Pricing</a>
+    </nav>
+  </aside>
 
-  <div class="card">
-    <div id="map"></div>
-  </div>
+  <main class="main">
+    <header class="header">
+      <h1>Dashboard</h1>
+      <button class="logout" onclick="logout()">Logout</button>
+    </header>
+
+    <section class="metrics">
+      <div class="card">
+        <h3>Total Accidents</h3>
+        <p>12,482</p>
+      </div>
+      <div class="card">
+        <h3>Fatal Crashes</h3>
+        <p>1,034</p>
+      </div>
+      <div class="card">
+        <h3>High Risk Zones</h3>
+        <p>87</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Accidents by Month</h2>
+      <canvas id="accidentChart"></canvas>
+    </section>
+  </main>
+
 </div>
 
-<script>
-let token = null;
-
-async function login() {
-  const res = await fetch("http://localhost:3000/login", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({
-      email:"demo@user.com",
-      password:"1234"
-    })
-  });
-
-  const data = await res.json();
-  token = data.token;
-
-  document.getElementById("login").classList.add("hidden");
-  document.getElementById("app").classList.remove("hidden");
-
-  loadChart();
-  loadMap();
-}
-
-async function loadChart() {
-  const res = await fetch("http://localhost:3000/stats/by-city", {
-    headers:{ Authorization: token }
-  });
-  const data = await res.json();
-
-  new Chart(document.getElementById("chart"), {
-    type:"bar",
-    data:{
-      labels:data.map(d=>d.city),
-      datasets:[{
-        data:data.map(d=>d.count)
-      }]
-    }
-  });
-}
-
-async function loadMap() {
-  const res = await fetch("http://localhost:3000/accidents/map", {
-    headers:{ Authorization: token }
-  });
-  const data = await res.json();
-
-  const map = L.map("map").setView([39,35],5);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
-
-  data.forEach(a=>{
-    if(!a.lat) return;
-    L.circleMarker([a.lat,a.lng],{
-      radius:6,
-      color:a.result==="Ölümlü"?"red":"orange"
-    }).addTo(map).bindPopup(a.city+" - "+a.result);
-  });
-}
-</script>
-
+<script src="assets/app.js"></script>
 </body>
 </html>
