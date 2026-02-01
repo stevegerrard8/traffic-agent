@@ -4,12 +4,24 @@
   <meta charset="UTF-8" />
   <title>TrafficData – Accident Intelligence Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font (SaaS standardı) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+
+<body class="dark-theme">
 
 <header class="navbar">
-  <div class="logo">Traffic<span>Data</span></div>
+  <div class="logo">
+    <!-- LOGO ALANI – istersen img koy -->
+    <!-- <img src="logo.png" alt="TrafficData Logo"> -->
+    Traffic<span>Data</span>
+  </div>
+
   <nav>
     <a href="#features">Features</a>
     <a href="#usecases">Use Cases</a>
@@ -17,16 +29,28 @@
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <h1>Traffic Accident Data,<br>Turned Into Intelligence</h1>
+    <h1>
+      Traffic Accident Data,<br>
+      <span class="accent">Turned Into Intelligence</span>
+    </h1>
+
     <p>
       A data-driven SaaS platform for analyzing, visualizing and exporting
       traffic accident statistics for governments, researchers and insurers.
     </p>
-    <a href="login.html" class="btn big">Try Demo</a>
+
+    <div class="hero-actions">
+      <a href="login.html" class="btn big">Try Demo</a>
+      <a href="#features" class="btn ghost">Learn More</a>
+    </div>
   </div>
+
   <div class="hero-visual">
+    <!-- ARKA PLAN / GÖRSEL ALANI -->
+    <!-- Buraya dashboard görseli, mockup veya SVG koyabilirsin -->
     <div class="glass-card">
       <h3>Live Insights</h3>
       <p>Risk zones · Trends · Fatality ratios</p>
@@ -34,8 +58,13 @@
   </div>
 </section>
 
+<!-- FEATURES -->
 <section id="features" class="section">
   <h2>Core Features</h2>
+  <p class="section-desc">
+    Designed for decision-makers who rely on accurate, transparent data.
+  </p>
+
   <div class="grid">
     <div class="card">📊 Interactive Dashboards</div>
     <div class="card">🗺️ Location-based Analysis</div>
@@ -44,14 +73,38 @@
   </div>
 </section>
 
+<!-- USE CASES -->
 <section id="usecases" class="section dark">
   <h2>Who Is It For?</h2>
+
   <div class="grid">
     <div class="card">Public Institutions</div>
     <div class="card">Insurance Companies</div>
     <div class="card">Researchers & Media</div>
     <div class="card">Smart City Projects</div>
   </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <h2>About TrafficData</h2>
+  <p class="section-desc">
+    TrafficData transforms open accident data into actionable insights,
+    supporting safer cities and data-driven public policies.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section class="section dark">
+  <h2>Contact</h2>
+  <p class="section-desc">
+    Interested in partnerships or institutional access?
+  </p>
+
+  <!-- İleride form koyabilirsin -->
+  <a href="mailto:info@trafficdata.io" class="btn big">
+    Contact Us
+  </a>
 </section>
 
 <footer class="footer">
