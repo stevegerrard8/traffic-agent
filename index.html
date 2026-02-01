@@ -4,47 +4,172 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crash Scope – Accident Intelligence Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #64748b; --dark: #0f172a; --light: #f8fafc; --white: #ffffff; --transition: all 0.3s ease; }
+        :root { 
+            --primary: #2563eb; 
+            --primary-dark: #1d4ed8; 
+            --secondary: #64748b; 
+            --dark: #0f172a; 
+            --light: #f8fafc; 
+            --white: #ffffff; 
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--dark); } .logo span { color: var(--primary); }
-        nav { display: flex; align-items: center; gap: 2rem; }
-        nav a { text-decoration: none; color: var(--secondary); font-weight: 500; transition: var(--transition); }
+
+        /* --- Navbar --- */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo { font-size: 1.6rem; font-weight: 800; text-decoration: none; color: var(--dark); letter-spacing: -1px; } 
+        .logo span { color: var(--primary); }
+        nav { display: flex; align-items: center; gap: 2.5rem; }
+        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
         nav a:hover { color: var(--primary); }
-        .btn { background: var(--primary); color: var(--white) !important; padding: 0.6rem 1.5rem; border-radius: 10px; font-weight: 600; text-decoration: none; transition: 0.3s; }
-        .hero { padding: 12rem 8% 6rem; display: flex; justify-content: space-between; align-items: center; gap: 4rem; background: radial-gradient(circle at 80% 20%, #e0f2fe 0%, transparent 40%); }
-        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; }
-        .hero-text p { font-size: 1.2rem; color: var(--secondary); margin-bottom: 2.5rem; max-width: 600px; }
-        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); padding: 2.5rem; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.1); width: 350px; }
-        .section { padding: 6rem 8%; } .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .card { background: var(--white); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,0,0,0.03); font-weight: 600; text-align: center; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .footer { padding: 3rem; text-align: center; color: var(--secondary); border-top: 1px solid rgba(0,0,0,0.05); }
-        @media (max-width: 1024px) { .hero { flex-direction: column; text-align: center; } .navbar nav { display: none; } }
+
+        /* --- Butonlar --- */
+        .btn { padding: 0.75rem 1.8rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: var(--transition); display: inline-block; cursor: pointer; border: none; }
+        .btn-primary { background: var(--primary); color: white !important; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3); }
+
+        /* --- Hero Section --- */
+        .hero { padding: 12rem 8% 8rem; display: flex; align-items: center; justify-content: space-between; gap: 4rem; background: radial-gradient(circle at 85% 15%, #dbeafe 0%, transparent 45%); }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem; color: var(--dark); }
+        .hero-text p { font-size: 1.25rem; color: var(--secondary); margin-bottom: 3rem; max-width: 550px; }
+        .hero-visual { flex: 1; display: flex; justify-content: center; }
+        
+        /* Placeholder Görsel Alanı */
+        .hero-img { width: 100%; max-width: 550px; height: 350px; background: var(--white); border-radius: 30px; box-shadow: 0 30px 60px -12px rgba(0,0,0,0.15); border: 8px solid white; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Özellikler --- */
+        .section { padding: 8rem 8%; }
+        .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; display: block; text-align: center; margin-bottom: 1rem; }
+        .section-title { font-size: 2.8rem; text-align: center; font-weight: 800; margin-bottom: 4rem; }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .feature-card { background: var(--white); padding: 3rem 2rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.03); transition: var(--transition); text-align: left; }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+        .feature-card h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 700; }
+        .feature-card p { color: var(--secondary); font-size: 1rem; }
+
+        /* --- Footer --- */
+        .footer { background: var(--dark); color: #94a3b8; padding: 6rem 8% 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; display: block; text-decoration: none; }
+        .footer-logo span { color: var(--primary); }
+        .footer-col h4 { color: white; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col ul li a { color: #94a3b8; text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary); }
+        
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 10rem; }
+            .hero-text p { margin: 0 auto 3rem; }
+            .navbar nav { display: none; }
+        }
     </style>
 </head>
 <body>
+
     <header class="navbar">
         <a href="index.html" class="logo">Crash<span>Scope</span></a>
         <nav>
-            <a href="index.html#features">Features</a>
+            <a href="#features">Features</a>
             <a href="pricing.html">Pricing</a>
-            <a href="dashboard.html" class="btn">Demo Login</a>
+            <a href="dashboard.html">Demo</a>
+            <a href="dashboard.html" class="btn btn-primary">Start Analyzing</a>
         </nav>
     </header>
+
     <section class="hero">
         <div class="hero-text">
-            <h1>Accident Data,<br>Turned Into Intelligence</h1>
-            <p>A data-driven SaaS platform for analyzing and visualizing accident statistics for a safer future.</p>
-            <a href="dashboard.html" class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Try Demo Now</a>
+            <h1>Smarter Cities,<br>Safer Streets</h1>
+            <p>Predict, analyze, and prevent traffic accidents with the world's most advanced data intelligence platform for urban safety.</p>
+            <div style="display: flex; gap: 1rem; justify-content: flex-start;">
+                <a href="dashboard.html" class="btn btn-primary">Explore Live Demo</a>
+                <a href="pricing.html" class="btn" style="color: var(--dark); background: #e2e8f0;">View Pricing</a>
+            </div>
         </div>
         <div class="hero-visual">
-            <div class="glass-card"><h3>Live Insights</h3><p>Risk zones · Trends · Fatality ratios</p></div>
+            <div class="hero-img">
+                <div style="text-align: center; padding: 20px;">
+                    <span style="font-size: 4rem;">📊</span>
+                    <p style="font-weight: 700; color: #64748b; margin-top: 10px;">Platform Preview</p>
+                </div>
+            </div>
         </div>
     </section>
-    <footer class="footer">© 2026 Crash Scope — Open & Transparent Data</footer>
+
+    <section id="features" class="section">
+        <span class="section-tag">Why Crash Scope?</span>
+        <h2 class="section-title">Built for Modern Safety Teams</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">📍</span>
+                <h3>Heatmap Analysis</h3>
+                <p>Pinpoint high-risk accident clusters across your city with centimeter-level precision.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🤖</span>
+                <h3>AI Predictions</h3>
+                <p>Utilize machine learning to forecast potential accident spikes based on weather and traffic flow.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📉</span>
+                <h3>Trend Monitoring</h3>
+                <p>Track fatality rates and injury statistics over time to measure the impact of your safety policies.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3>Real-time Alerts</h3>
+                <p>Receive instant notifications when accident patterns deviate from historical norms.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">Crash<span>Scope</span></a>
+                <p>Transforming complex accident data into actionable life-saving insights.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="#">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 Istanbul Tech Hub, No: 34</li>
+                    <li>📧 info@crashscope.com</li>
+                    <li>📞 +90 (212) 555 0123</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter/X</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Crash Scope Intelligence. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
