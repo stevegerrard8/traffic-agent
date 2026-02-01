@@ -2,55 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Traffic Agent – Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>Dashboard – TrafficData</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="app-body">
+<body>
 
-<div class="app">
+<div class="dashboard">
 
   <aside class="sidebar">
-    <h2>🚦 Traffic Agent</h2>
-    <nav>
-      <a class="active">Dashboard</a>
-      <a>Accidents</a>
-      <a>Analytics</a>
-      <a>Pricing</a>
-    </nav>
+    <h2>TrafficData</h2>
+    <a>Overview</a>
+    <a>Accidents</a>
+    <a>Regions</a>
+    <a>Export</a>
   </aside>
 
-  <main class="main">
-    <header class="header">
-      <h1>Crash Analytics Dashboard</h1>
-      <button class="logout" onclick="logout()">Logout</button>
-    </header>
+  <main class="content">
+    <h1>Traffic Accident Overview</h1>
 
-    <section class="metrics">
-      <div class="card">
-        <h3>Total Accidents</h3>
-        <p>12,482</p>
-      </div>
-      <div class="card">
-        <h3>Fatal Crashes</h3>
-        <p>1,034</p>
-      </div>
-      <div class="card">
-        <h3>High Risk Zones</h3>
-        <p>87</p>
-      </div>
-    </section>
+    <div class="stats">
+      <div class="stat">🚗 Total Accidents<br><strong>124,532</strong></div>
+      <div class="stat">⚠️ Fatal<br><strong>3,218</strong></div>
+      <div class="stat">📈 YoY Change<br><strong>-4.2%</strong></div>
+    </div>
 
-    <section class="panel">
-      <h2>Accidents by Month</h2>
-      <canvas id="accidentChart"></canvas>
-    </section>
-
+    <canvas id="accidentChart"></canvas>
   </main>
+
 </div>
 
-<script src="assets/app.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
 </html>
