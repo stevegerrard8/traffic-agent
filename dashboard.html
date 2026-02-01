@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Dashboard – TrafficData</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8" />
+    <title>Dashboard – TrafficData</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body style="background-color: #f1f5f9;">
 
-<div class="dashboard">
+<div class="dashboard-wrapper">
 
   <aside class="sidebar">
-    <h2>TrafficData</h2>
-    <a>Overview</a>
-    <a>Accidents</a>
-    <a>Regions</a>
-    <a>Export</a>
+    <h2>Traffic<span>Data</span></h2>
+    <a href="#" class="active">🏠 Overview</a>
+    <a href="#">🚗 Accidents</a>
+    <a href="#">🗺️ Regions</a>
+    <a href="#">📤 Export</a>
   </aside>
 
   <main class="content">
-    <h1>Traffic Accident Overview</h1>
+    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h1>Traffic Accident Overview</h1>
+        <div class="user-profile" style="font-weight: 600; color: var(--secondary);">Admin User ↓</div>
+    </header>
 
     <div class="stats">
-      <div class="stat">🚗 Total Accidents<br><strong>124,532</strong></div>
-      <div class="stat">⚠️ Fatal<br><strong>3,218</strong></div>
-      <div class="stat">📈 YoY Change<br><strong>-4.2%</strong></div>
+      <div class="stat">
+          <span>🚗 Total Accidents</span>
+          <strong>124,532</strong>
+      </div>
+      <div class="stat">
+          <span>⚠️ Fatal Incidents</span>
+          <strong style="color: #ef4444;">3,218</strong>
+      </div>
+      <div class="stat">
+          <span>📈 YoY Change</span>
+          <strong style="color: #10b981;">-4.2%</strong>
+      </div>
     </div>
 
-    <canvas id="accidentChart"></canvas>
+    <div class="chart-container">
+        <h3 style="margin-bottom: 1.5rem;">Accident Trends (Monthly)</h3>
+        <canvas id="accidentChart" height="100"></canvas>
+    </div>
   </main>
 
 </div>
 
-<script src="js/dashboard.js"></script>
+<script>
+    // Küçük bir demo grafik ayarı
+    const ctx = document.getElementById('accidentChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Accidents',
+                data: [12000, 19000, 15000, 17000, 14000, 11000],
+                borderColor: '#2563eb',
+                tension: 0.4,
+                fill: true,
+                backgroundColor: 'rgba(37, 99, 235, 0.05)'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, grid: { display: false } }, x: { grid: { display: false } } }
+        }
+    });
+</script>
 </body>
 </html>
