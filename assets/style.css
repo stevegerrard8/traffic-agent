@@ -2,66 +2,99 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Inter, Arial, sans-serif;
+  font-family: Inter, system-ui, Arial, sans-serif;
 }
 
-body {
+/* ===== LANDING ===== */
+body.landing {
+  min-height: 100vh;
   background: linear-gradient(135deg, #020617, #0f172a);
   color: white;
-  min-height: 100vh;
 }
 
-.hidden {
-  display: none;
-}
-
-/* LOGIN */
-.login {
+.landing-wrapper {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
   height: 100vh;
+}
+
+.landing-left {
+  padding: 80px;
+}
+
+.landing-left h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 20px;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+.features li {
+  list-style: none;
+  font-size: 18px;
+  margin-bottom: 14px;
+  opacity: 0.9;
+}
+
+.landing-right {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login h1 {
-  font-size: 42px;
+.login-box {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 16px;
+  width: 320px;
+}
+
+.login-box h2 {
   margin-bottom: 10px;
 }
 
-.login p {
+.login-box .small {
+  font-size: 14px;
   opacity: 0.7;
   margin-bottom: 30px;
 }
 
-.login button {
-  padding: 14px 28px;
+.login-box button {
+  width: 100%;
+  padding: 14px;
   font-size: 16px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
+  cursor: pointer;
   background: #2563eb;
   color: white;
-  cursor: pointer;
 }
 
-.login button:hover {
+.login-box button:hover {
   background: #1d4ed8;
 }
 
-/* APP */
-.app {
-  display: flex;
-  min-height: 100vh;
+/* ===== APP ===== */
+body.app-body {
   background: #f4f6f8;
   color: #111;
 }
 
-/* SIDEBAR */
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
 .sidebar {
   width: 240px;
   background: #020617;
   color: white;
-  padding: 20px;
+  padding: 24px;
 }
 
 .sidebar h2 {
@@ -71,7 +104,7 @@ body {
 .sidebar nav a {
   display: block;
   padding: 12px;
-  border-radius: 6px;
+  border-radius: 8px;
   margin-bottom: 6px;
   opacity: 0.85;
 }
@@ -82,7 +115,6 @@ body {
   opacity: 1;
 }
 
-/* MAIN */
 .main {
   flex: 1;
   padding: 30px;
@@ -114,9 +146,9 @@ body {
 
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .card h3 {
@@ -125,15 +157,15 @@ body {
 }
 
 .card p {
-  font-size: 28px;
-  margin-top: 8px;
+  font-size: 30px;
   font-weight: bold;
+  margin-top: 8px;
 }
 
 /* PANEL */
 .panel {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
