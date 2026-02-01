@@ -1,15 +1,12 @@
-function login() {
-  document.getElementById("login-screen").classList.add("hidden");
-  document.getElementById("app-screen").classList.remove("hidden");
-  loadChart();
+function demoLogin() {
+  window.location.href = "dashboard.html";
 }
 
 function logout() {
-  document.getElementById("app-screen").classList.add("hidden");
-  document.getElementById("login-screen").classList.remove("hidden");
+  window.location.href = "index.html";
 }
 
-function loadChart() {
+document.addEventListener("DOMContentLoaded", () => {
   const ctx = document.getElementById("accidentChart");
   if (!ctx) return;
 
@@ -30,4 +27,4 @@ function loadChart() {
       responsive: true
     }
   });
-}
+});
