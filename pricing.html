@@ -6,146 +6,39 @@
     <title>Pricing – Crash Scope</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --primary: #2563eb; 
-            --primary-dark: #1d4ed8; 
-            --secondary: #64748b; 
-            --dark: #0f172a; 
-            --light: #f8fafc; 
-            --white: #ffffff; 
-            --danger: #94a3b8; /* Devre dışı özellikler için */
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-
+        :root { --primary: #2563eb; --dark: #0f172a; --secondary: #64748b; --light: #f8fafc; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); }
-
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        body { background-color: var(--light); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: white; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--dark); } .logo span { color: var(--primary); }
-        nav { display: flex; align-items: center; gap: 2rem; }
-        nav a { text-decoration: none; color: var(--secondary); font-weight: 500; transition: var(--transition); }
-
+        nav { display: flex; gap: 2rem; align-items: center; }
+        nav a { text-decoration: none; color: var(--secondary); font-weight: 600; }
         .pricing-header { padding: 10rem 8% 4rem; text-align: center; }
-        .pricing-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; color: var(--dark); }
-        .pricing-header p { font-size: 1.2rem; color: var(--secondary); max-width: 600px; margin: 0 auto; }
-
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; padding: 0 8% 8rem; max-width: 1300px; margin: 0 auto; align-items: stretch; }
-
-        .pricing-card { 
-            background: var(--white); 
-            padding: 3.5rem 2.5rem; 
-            border-radius: 32px; 
-            border: 1px solid rgba(0,0,0,0.05); 
-            transition: var(--transition); 
-            display: flex; 
-            flex-direction: column; 
-            position: relative;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .pricing-card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); border-color: var(--primary); }
-
-        /* Highlighted (Pro) Plan */
-        .popular { border: 2.5px solid var(--primary); background: #ffffff; }
-        .badge { position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-
-        .plan-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-        .plan-desc { font-size: 0.95rem; color: var(--secondary); margin-bottom: 2rem; }
-        .price { font-size: 3.5rem; font-weight: 800; margin-bottom: 2rem; display: flex; align-items: baseline; gap: 0.2rem; }
-        .price span { font-size: 1.25rem; color: var(--secondary); font-weight: 400; }
-
-        .features-list { list-style: none; margin-bottom: 3rem; flex-grow: 1; border-top: 1px solid #f1f5f9; padding-top: 2rem; }
-        .features-list li { margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; }
-        
-        /* Simge Stilleri */
-        .check { color: #10b981; font-weight: 800; font-size: 1.2rem; }
-        .cross { color: #94a3b8; font-weight: 400; font-size: 1.2rem; }
-        .disabled { color: #94a3b8; text-decoration: line-through; opacity: 0.7; }
-
-        .btn { 
-            display: block; 
-            text-align: center; 
-            padding: 1.2rem; 
-            border-radius: 16px; 
-            font-weight: 700; 
-            text-decoration: none; 
-            transition: var(--transition); 
-            font-size: 1.1rem;
-        }
-
-        .btn-outline { border: 2px solid #e2e8f0; color: var(--dark); }
-        .btn-outline:hover { background: #f8fafc; border-color: var(--primary); color: var(--primary); }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-dark); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4); }
-
-        @media (max-width: 768px) { .pricing-header h1 { font-size: 2.2rem; } }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; padding: 0 8% 8rem; max-width: 1200px; margin: 0 auto; }
+        .pricing-card { background: white; padding: 3rem 2rem; border-radius: 24px; border: 1px solid #e2e8f0; position: relative; }
+        .popular { border: 2px solid var(--primary); transform: scale(1.05); }
+        .price { font-size: 3rem; font-weight: 800; margin: 1.5rem 0; }
+        .features-list { list-style: none; margin-bottom: 2rem; }
+        .features-list li { margin-bottom: 1rem; color: var(--secondary); }
+        .btn { display: block; text-align: center; padding: 1rem; border-radius: 12px; text-decoration: none; font-weight: 700; background: var(--dark); color: white; }
+        .btn-primary { background: var(--primary); }
     </style>
 </head>
 <body>
-
-<header class="navbar">
-    <a href="index.html" class="logo">Crash<span>Scope</span></a>
-    <nav>
-        <a href="index.html#features">Features</a>
-        <a href="pricing.html" style="color: var(--primary);">Pricing</a>
-        <a href="dashboard.html" style="background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none;">Demo Login</a>
-    </nav>
-</header>
-
-<div class="pricing-header">
-    <h1>Transparent Pricing</h1>
-    <p>Empowering city planners and researchers with precise accident intelligence.</p>
-</div>
-
-
-
-<div class="pricing-grid">
-    <div class="pricing-card">
-        <div class="plan-title">Starter</div>
-        <p class="plan-desc">Perfect for individual researchers and students.</p>
-        <div class="price">$0<span>/mo</span></div>
-        <ul class="features-list">
-            <li><span class="check">✓</span> Standard Dashboards</li>
-            <li><span class="check">✓</span> Basic PDF Export</li>
-            <li><span class="check">✓</span> 1 User Access</li>
-            <li class="disabled"><span class="cross">✕</span> API Integration</li>
-            <li class="disabled"><span class="cross">✕</span> Predictive AI Models</li>
-            <li class="disabled"><span class="cross">✕</span> Priority Support</li>
-        </ul>
-        <a href="dashboard.html" class="btn btn-outline">Start for Free</a>
+    <header class="navbar">
+        <a href="index.html" class="logo">Crash<span>Scope</span></a>
+        <nav>
+            <a href="index.html#solutions">Solutions</a>
+            <a href="pricing.html" style="color: var(--primary);">Pricing</a>
+            <a href="blog.html">Blog</a>
+            <a href="dashboard.html" style="background: var(--primary); color: white; padding: 0.6rem 1.2rem; border-radius: 8px;">Portal</a>
+        </nav>
+    </header>
+    <div class="pricing-header"><h1>Transparent Plans</h1><p>Scalable risk intelligence for teams of all sizes.</p></div>
+    <div class="pricing-grid">
+        <div class="pricing-card"><h3>Starter</h3><div class="price">$0</div><ul class="features-list"><li>✓ Basic Maps</li><li>✓ PDF Reports</li><li>✕ API Access</li></ul><a href="dashboard.html" class="btn">Get Started</a></div>
+        <div class="pricing-card popular"><div style="background: var(--primary); color: white; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">MOST POPULAR</div><h3>Pro</h3><div class="price">$49</div><ul class="features-list"><li>✓ Advanced Heatmaps</li><li>✓ CSV/JSON Export</li><li>✓ API Access</li></ul><a href="dashboard.html" class="btn btn-primary">Start Free Trial</a></div>
+        <div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><ul class="features-list"><li>✓ Dedicated Manager</li><li>✓ AI Predictions</li><li>✓ On-Premise</li></ul><a href="mailto:info@crashscope.com" class="btn">Contact Sales</a></div>
     </div>
-
-    <div class="pricing-card popular">
-        <div class="badge">Most Popular</div>
-        <div class="plan-title">Professional</div>
-        <p class="plan-desc">Best for data analysts and private companies.</p>
-        <div class="price">$49<span>/mo</span></div>
-        <ul class="features-list">
-            <li><span class="check">✓</span> Advanced Heatmaps</li>
-            <li><span class="check">✓</span> Full CSV/JSON Export</li>
-            <li><span class="check">✓</span> 5 Team Members</li>
-            <li><span class="check">✓</span> API Integration</li>
-            <li class="disabled"><span class="cross">✕</span> Predictive AI Models</li>
-            <li><span class="check">✓</span> Email Support</li>
-        </ul>
-        <a href="dashboard.html" class="btn btn-primary">Try Pro Free</a>
-    </div>
-
-    <div class="pricing-card">
-        <div class="plan-title">Government</div>
-        <p class="plan-desc">Full-scale intelligence for smart cities.</p>
-        <div class="price">Custom</div>
-        <ul class="features-list">
-            <li><span class="check">✓</span> Everything in Pro</li>
-            <li><span class="check">✓</span> Predictive AI Models</li>
-            <li><span class="check">✓</span> Unlimited Team Members</li>
-            <li><span class="check">✓</span> On-premise Deployment</li>
-            <li><span class="check">✓</span> 24/7 Dedicated Manager</li>
-            <li><span class="check">✓</span> Custom API Webhooks</li>
-        </ul>
-        <a href="mailto:sales@crashscope.com" class="btn btn-outline">Contact Sales</a>
-    </div>
-</div>
-
 </body>
 </html>
