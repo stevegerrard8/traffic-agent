@@ -18,7 +18,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
 
         /* --- Navbar --- */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
@@ -26,42 +26,47 @@
         .logo span { color: var(--primary); }
         nav { display: flex; align-items: center; gap: 2.5rem; }
         nav a { text-decoration: none; color: var(--secondary); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
-
-        .btn { padding: 0.75rem 1.8rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: var(--transition); display: inline-block; cursor: pointer; border: none; }
+        .btn { padding: 0.75rem 1.8rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: var(--transition); display: inline-block; border: none; }
         .btn-primary { background: var(--primary); color: white !important; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3); }
 
         /* --- Hero --- */
         .hero { padding: 12rem 8% 6rem; display: flex; align-items: center; justify-content: space-between; gap: 4rem; background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); }
         .hero-text { flex: 1; }
-        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem; color: var(--dark); }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem; }
         .hero-text h1 span { color: var(--primary); }
-        .hero-text p { font-size: 1.25rem; color: var(--secondary); margin-bottom: 3rem; max-width: 600px; }
 
-        /* --- Stat Counter Box (GÜNCELLENDİ) --- */
-        .trust-box { background: var(--dark); color: white; padding: 4rem 8%; display: flex; justify-content: space-around; text-align: center; border-radius: 40px; margin: 0 8% 4rem; flex-wrap: wrap; gap: 2rem; }
-        .trust-item { flex: 1; min-width: 150px; }
-        .trust-item h2 { font-size: 3.5rem; color: var(--primary); font-weight: 800; margin-bottom: 0.5rem; }
-        .trust-item p { font-size: 1rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        /* --- Stats Box --- */
+        .trust-box { background: var(--dark); color: white; padding: 4rem 8%; display: flex; justify-content: space-around; text-align: center; border-radius: 40px; margin: 0 8% 2rem; flex-wrap: wrap; gap: 2rem; }
+        .trust-item h2 { font-size: 3.5rem; color: var(--primary); font-weight: 800; }
+        .trust-item p { font-size: 0.9rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; }
+
+        /* --- Logo Carousel (YENİ) --- */
+        .references-section { padding: 2rem 0 6rem; text-align: center; }
+        .references-section h3 { font-size: 0.9rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; }
+        
+        .logos-container { overflow: hidden; white-space: nowrap; position: relative; padding: 20px 0; }
+        .logos-container::before, .logos-container::after { content: ""; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; }
+        .logos-container::before { left: 0; background: linear-gradient(to right, var(--light), transparent); }
+        .logos-container::after { right: 0; background: linear-gradient(to left, var(--light), transparent); }
+
+        .logos-slide { display: inline-block; animation: 25s slide infinite linear; }
+        .logos-slide span { font-size: 1.8rem; font-weight: 800; color: #cbd5e1; margin: 0 50px; cursor: default; transition: 0.3s; }
+        .logos-slide span:hover { color: var(--primary); }
+
+        @keyframes slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
 
         /* --- Solutions --- */
         .section { padding: 8rem 8%; }
-        .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; display: block; text-align: center; margin-bottom: 1rem; }
+        .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; display: block; text-align: center; margin-bottom: 1rem; }
         .section-title { font-size: 2.5rem; text-align: center; font-weight: 800; margin-bottom: 4rem; }
-        
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .feature-card { background: var(--white); padding: 3rem 2rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
-        .feature-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .feature-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+        .feature-card { background: var(--white); padding: 3rem 2rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); }
 
         /* --- Footer --- */
-        .footer { background: var(--dark); color: #94a3b8; padding: 6rem 8% 2rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
-        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; display: block; text-decoration: none; }
-        .footer-logo span { color: var(--primary); }
-        .footer-col h4 { color: white; margin-bottom: 1.5rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer { background: var(--dark); color: #94a3b8; padding: 4rem 8% 2rem; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
 
         @media (max-width: 1024px) { .hero { flex-direction: column; text-align: center; } .navbar nav { display: none; } }
@@ -81,7 +86,7 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Predict Risks.<br><span>Lower Claims.</span></h1>
-            <p>Advanced actuarial data intelligence for modern insurance companies. Optimize premiums and mitigate high-risk underwriting with Crash Scope.</p>
+            <p>Empowering insurance leaders with precise actuarial data. Mitigate losses with Crash Scope's predictive intelligence.</p>
             <div style="display: flex; gap: 1rem;">
                 <a href="dashboard.html" class="btn btn-primary">Get Risk Report</a>
                 <a href="pricing.html" class="btn" style="background: white; border: 1px solid #e2e8f0;">Enterprise Solutions</a>
@@ -90,8 +95,8 @@
         <div class="hero-visual">
             <div style="background: white; padding: 3rem; border-radius: 30px; box-shadow: 0 40px 80px rgba(0,0,0,0.1); text-align: center;">
                 <span style="font-size: 4rem;">🛡️</span>
-                <h3 style="margin-top:1rem;">Actuarial Ready</h3>
-                <p style="color:var(--secondary)">Data Integrity Verified</p>
+                <h3 style="margin-top:1rem;">Verified Data</h3>
+                <p style="color:var(--secondary)">Sector-Leading Precision</p>
             </div>
         </div>
     </section>
@@ -102,7 +107,7 @@
             <p>Claim Reduction %</p>
         </div>
         <div class="trust-item">
-            <h2 class="counter" data-target="12500">0</h2>
+            <h2 class="counter" data-target="1200">0</h2>
             <p>Active Users</p>
         </div>
         <div class="trust-item">
@@ -110,6 +115,30 @@
             <p>Analyzed Data (M+)</p>
         </div>
     </div>
+
+    <section class="references-section">
+        <h3>Trusted by Global Leaders</h3>
+        <div class="logos-container">
+            <div class="logos-slide">
+                <span>AXON INSURANCE</span>
+                <span>METROGUARD</span>
+                <span>GLOBAL RE</span>
+                <span>ZENITH ASSURANCE</span>
+                <span>ALIANS GROUP</span>
+                <span>NEXUS UNDERWRITING</span>
+                <span>PRIME MUTUAL</span>
+            </div>
+            <div class="logos-slide">
+                <span>AXON INSURANCE</span>
+                <span>METROGUARD</span>
+                <span>GLOBAL RE</span>
+                <span>ZENITH ASSURANCE</span>
+                <span>ALIANS GROUP</span>
+                <span>NEXUS UNDERWRITING</span>
+                <span>PRIME MUTUAL</span>
+            </div>
+        </div>
+    </section>
 
     <section id="solutions" class="section">
         <span class="section-tag">Insurance Solutions</span>
@@ -134,28 +163,15 @@
     </section>
 
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <a href="#" class="footer-logo">Crash<span>Scope</span></a>
-                <p>Precision intelligence for the global insurance industry.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li>📍 Financial District, Istanbul</li>
-                    <li>📧 sales@crashscope.com</li>
-                    <li>📞 +90 (212) 555 0123</li>
-                </ul>
-            </div>
-        </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Crash Scope Insurance Intelligence. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // SAYAÇ SCRIPTI
         const counters = document.querySelectorAll('.counter');
-        const speed = 200; // Sayma hızı (daha düşük sayı = daha yavaş)
+        const speed = 200;
 
         const startCounters = () => {
             counters.forEach(counter => {
@@ -175,12 +191,11 @@
             });
         };
 
-        // Sayfa aşağı kaydırıldığında animasyonu başlat (Observer)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     startCounters();
-                    observer.unobserve(entry.target); // Sadece bir kere çalışsın
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
