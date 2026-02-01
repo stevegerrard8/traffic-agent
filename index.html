@@ -1,27 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>TrafficData – Accident Intelligence Platform</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrafficData – Accident Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #38bdf8;
+        }
 
-  <!-- Google Font (SaaS standardı) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-  <link rel="stylesheet" href="css/style.css" />
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--dark);
+        }
+
+        .logo span { color: var(--primary); }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary);
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        .btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 10% 6rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            background: radial-gradient(circle at top right, #e0f2fe, transparent);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+        }
+
+        .btn.big {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 10%;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary);
+        }
+
+        .dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .dark .card {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 10%;
+            text-align: center;
+            background: var(--light);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 8rem; }
+            .hero p { margin-left: auto; margin-right: auto; }
+            .hero h1 { font-size: 2.8rem; }
+            nav { display: none; } /* Sadeleştirmek adına mobilde gizlendi */
+        }
+    </style>
 </head>
-
-<body class="dark-theme">
+<body>
 
 <header class="navbar">
-  <div class="logo">
-    <!-- LOGO ALANI – istersen img koy -->
-    <!-- <img src="logo.png" alt="TrafficData Logo"> -->
-    Traffic<span>Data</span>
-  </div>
-
+  <div class="logo">Traffic<span>Data</span></div>
   <nav>
     <a href="#features">Features</a>
     <a href="#usecases">Use Cases</a>
@@ -29,54 +207,40 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <h1>
-      Traffic Accident Data,<br>
-      <span class="accent">Turned Into Intelligence</span>
-    </h1>
-
+    <h1>Traffic Accident Data,<br>Turned Into Intelligence</h1>
     <p>
       A data-driven SaaS platform for analyzing, visualizing and exporting
       traffic accident statistics for governments, researchers and insurers.
     </p>
-
-    <div class="hero-actions">
-      <a href="login.html" class="btn big">Try Demo</a>
-      <a href="#features" class="btn ghost">Learn More</a>
-    </div>
+    <a href="login.html" class="btn big">Try Demo Today</a>
   </div>
-
   <div class="hero-visual">
-    <!-- ARKA PLAN / GÖRSEL ALANI -->
-    <!-- Buraya dashboard görseli, mockup veya SVG koyabilirsin -->
     <div class="glass-card">
-      <h3>Live Insights</h3>
-      <p>Risk zones · Trends · Fatality ratios</p>
+      <div style="color: var(--primary); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem;">Real-time Monitor</div>
+      <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Live Insights</h3>
+      <p style="color: var(--secondary); font-size: 1rem;">
+        <span style="display: block; margin-bottom: 0.5rem;">📍 142 Active Risk Zones</span>
+        <span style="display: block; margin-bottom: 0.5rem;">📈 +12% Efficiency Trend</span>
+        <span style="display: block;">📉 Fatality Ratios Decreasing</span>
+      </p>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
 <section id="features" class="section">
   <h2>Core Features</h2>
-  <p class="section-desc">
-    Designed for decision-makers who rely on accurate, transparent data.
-  </p>
-
   <div class="grid">
-    <div class="card">📊 Interactive Dashboards</div>
-    <div class="card">🗺️ Location-based Analysis</div>
-    <div class="card">📁 Open Data Ready</div>
-    <div class="card">📤 CSV / API Export</div>
+    <div class="card"><span>📊</span> Interactive Dashboards</div>
+    <div class="card"><span>🗺️</span> Location-based Analysis</div>
+    <div class="card"><span>📁</span> Open Data Ready</div>
+    <div class="card"><span>📤</span> CSV / API Export</div>
   </div>
 </section>
 
-<!-- USE CASES -->
 <section id="usecases" class="section dark">
   <h2>Who Is It For?</h2>
-
   <div class="grid">
     <div class="card">Public Institutions</div>
     <div class="card">Insurance Companies</div>
@@ -85,30 +249,8 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section">
-  <h2>About TrafficData</h2>
-  <p class="section-desc">
-    TrafficData transforms open accident data into actionable insights,
-    supporting safer cities and data-driven public policies.
-  </p>
-</section>
-
-<!-- CONTACT -->
-<section class="section dark">
-  <h2>Contact</h2>
-  <p class="section-desc">
-    Interested in partnerships or institutional access?
-  </p>
-
-  <!-- İleride form koyabilirsin -->
-  <a href="mailto:info@trafficdata.io" class="btn big">
-    Contact Us
-  </a>
-</section>
-
 <footer class="footer">
-  © 2026 TrafficData — Open & Transparent Data
+  © 2026 TrafficData — Open & Transparent Data Intelligence Platform
 </footer>
 
 </body>
