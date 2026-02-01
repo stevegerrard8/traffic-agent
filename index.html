@@ -20,6 +20,7 @@
         html { scroll-behavior: smooth; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
 
+        /* --- Navbar --- */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 8%; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .logo { font-size: 1.6rem; font-weight: 800; text-decoration: none; color: var(--dark); letter-spacing: -1px; } 
         .logo span { color: var(--primary); }
@@ -31,13 +32,19 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3); }
 
         /* --- Hero --- */
-        .hero { padding: 12rem 8% 8rem; display: flex; align-items: center; justify-content: space-between; gap: 4rem; background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); }
+        .hero { padding: 12rem 8% 6rem; display: flex; align-items: center; justify-content: space-between; gap: 4rem; background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); }
         .hero-text { flex: 1; }
         .hero-text h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem; color: var(--dark); }
         .hero-text h1 span { color: var(--primary); }
         .hero-text p { font-size: 1.25rem; color: var(--secondary); margin-bottom: 3rem; max-width: 600px; }
 
-        /* --- Features --- */
+        /* --- Stat Counter Box (GÜNCELLENDİ) --- */
+        .trust-box { background: var(--dark); color: white; padding: 4rem 8%; display: flex; justify-content: space-around; text-align: center; border-radius: 40px; margin: 0 8% 4rem; flex-wrap: wrap; gap: 2rem; }
+        .trust-item { flex: 1; min-width: 150px; }
+        .trust-item h2 { font-size: 3.5rem; color: var(--primary); font-weight: 800; margin-bottom: 0.5rem; }
+        .trust-item p { font-size: 1rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Solutions --- */
         .section { padding: 8rem 8%; }
         .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; display: block; text-align: center; margin-bottom: 1rem; }
         .section-title { font-size: 2.5rem; text-align: center; font-weight: 800; margin-bottom: 4rem; }
@@ -46,12 +53,6 @@
         .feature-card { background: var(--white); padding: 3rem 2rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); transition: var(--transition); }
         .feature-card:hover { transform: translateY(-10px); border-color: var(--primary); }
         .feature-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
-        .feature-card h3 { font-size: 1.3rem; margin-bottom: 1rem; }
-        .feature-card p { color: var(--secondary); }
-
-        /* --- Stats/Trust Area --- */
-        .trust-box { background: var(--dark); color: white; padding: 4rem 8%; display: flex; justify-content: space-around; text-align: center; border-radius: 40px; margin: 0 8% 4rem; }
-        .trust-item h2 { font-size: 3rem; color: var(--primary); }
 
         /* --- Footer --- */
         .footer { background: var(--dark); color: #94a3b8; padding: 6rem 8% 2rem; }
@@ -61,7 +62,6 @@
         .footer-col h4 { color: white; margin-bottom: 1.5rem; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 0.8rem; }
-        .footer-col ul li a { color: #94a3b8; text-decoration: none; transition: 0.3s; }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
 
         @media (max-width: 1024px) { .hero { flex-direction: column; text-align: center; } .navbar nav { display: none; } }
@@ -81,31 +81,39 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Predict Risks.<br><span>Lower Claims.</span></h1>
-            <p>Advanced actuarial data intelligence for modern insurance companies. Analyze accident hotspots to optimize premiums and mitigate high-risk underwriting.</p>
+            <p>Advanced actuarial data intelligence for modern insurance companies. Optimize premiums and mitigate high-risk underwriting with Crash Scope.</p>
             <div style="display: flex; gap: 1rem;">
                 <a href="dashboard.html" class="btn btn-primary">Get Risk Report</a>
                 <a href="pricing.html" class="btn" style="background: white; border: 1px solid #e2e8f0;">Enterprise Solutions</a>
             </div>
         </div>
         <div class="hero-visual">
-            <div style="background: white; padding: 2rem; border-radius: 30px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);">
+            <div style="background: white; padding: 3rem; border-radius: 30px; box-shadow: 0 40px 80px rgba(0,0,0,0.1); text-align: center;">
                 <span style="font-size: 4rem;">🛡️</span>
                 <h3 style="margin-top:1rem;">Actuarial Ready</h3>
-                <p style="color:var(--secondary)">99.9% Data Accuracy</p>
+                <p style="color:var(--secondary)">Data Integrity Verified</p>
             </div>
         </div>
     </section>
 
     <div class="trust-box">
-        <div class="trust-item"><h2>25%</h2><p>Claim Reduction</p></div>
-        <div class="trust-item"><h2>10M+</h2><p>Analyzed Data</p></div>
-        <div class="trust-item"><h2>AI</h2><p>Driven Scoring</p></div>
+        <div class="trust-item">
+            <h2 class="counter" data-target="25">0</h2>
+            <p>Claim Reduction %</p>
+        </div>
+        <div class="trust-item">
+            <h2 class="counter" data-target="12500">0</h2>
+            <p>Active Users</p>
+        </div>
+        <div class="trust-item">
+            <h2 class="counter" data-target="10">0</h2>
+            <p>Analyzed Data (M+)</p>
+        </div>
     </div>
 
     <section id="solutions" class="section">
         <span class="section-tag">Insurance Solutions</span>
         <h2 class="section-title">Turn Accident Data Into Profit</h2>
-        
         <div class="features-grid">
             <div class="feature-card">
                 <span class="feature-icon">🔍</span>
@@ -129,20 +137,12 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <a href="#" class="footer-logo">Crash<span>Scope</span></a>
-                <p>Precision intelligence for the global insurance and reinsurance industry.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Solutions</h4>
-                <ul>
-                    <li><a href="#">Actuarial Data</a></li>
-                    <li><a href="#">Claim Mitigation</a></li>
-                    <li><a href="#">API Integration</a></li>
-                </ul>
+                <p>Precision intelligence for the global insurance industry.</p>
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
                 <ul>
-                    <li>📍 Levent Financial District, Istanbul</li>
+                    <li>📍 Financial District, Istanbul</li>
                     <li>📧 sales@crashscope.com</li>
                     <li>📞 +90 (212) 555 0123</li>
                 </ul>
@@ -152,6 +152,41 @@
             <p>&copy; 2026 Crash Scope Insurance Intelligence. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Sayma hızı (daha düşük sayı = daha yavaş)
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target + (target === 25 ? "%" : (target === 10 ? "M+" : ""));
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Sayfa aşağı kaydırıldığında animasyonu başlat (Observer)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounters();
+                    observer.unobserve(entry.target); // Sadece bir kere çalışsın
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.trust-box'));
+    </script>
 
 </body>
 </html>
