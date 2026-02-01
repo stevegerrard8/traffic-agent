@@ -34,39 +34,42 @@
         .hero-text { flex: 1; }
         .hero-text h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; font-weight: 800; margin-bottom: 1.5rem; }
         .hero-text h1 span { color: var(--primary); }
+        .hero-text p { font-size: 1.25rem; color: var(--secondary); margin-bottom: 3rem; }
 
         /* --- Stats Box --- */
         .trust-box { background: var(--dark); color: white; padding: 4rem 8%; display: flex; justify-content: space-around; text-align: center; border-radius: 40px; margin: 0 8% 2rem; flex-wrap: wrap; gap: 2rem; }
         .trust-item h2 { font-size: 3.5rem; color: var(--primary); font-weight: 800; }
         .trust-item p { font-size: 0.9rem; color: #94a3b8; font-weight: 600; text-transform: uppercase; }
 
-        /* --- Logo Carousel (YENİ) --- */
+        /* --- Logo Carousel --- */
         .references-section { padding: 2rem 0 6rem; text-align: center; }
         .references-section h3 { font-size: 0.9rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; }
-        
         .logos-container { overflow: hidden; white-space: nowrap; position: relative; padding: 20px 0; }
         .logos-container::before, .logos-container::after { content: ""; position: absolute; top: 0; width: 150px; height: 100%; z-index: 2; }
         .logos-container::before { left: 0; background: linear-gradient(to right, var(--light), transparent); }
         .logos-container::after { right: 0; background: linear-gradient(to left, var(--light), transparent); }
-
         .logos-slide { display: inline-block; animation: 25s slide infinite linear; }
-        .logos-slide span { font-size: 1.8rem; font-weight: 800; color: #cbd5e1; margin: 0 50px; cursor: default; transition: 0.3s; }
-        .logos-slide span:hover { color: var(--primary); }
+        .logos-slide span { font-size: 1.8rem; font-weight: 800; color: #cbd5e1; margin: 0 50px; cursor: default; }
 
-        @keyframes slide {
-            from { transform: translateX(0); }
-            to { transform: translateX(-100%); }
-        }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
         /* --- Solutions --- */
-        .section { padding: 8rem 8%; }
+        .section { padding: 6rem 8%; }
         .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; display: block; text-align: center; margin-bottom: 1rem; }
         .section-title { font-size: 2.5rem; text-align: center; font-weight: 800; margin-bottom: 4rem; }
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .feature-card { background: var(--white); padding: 3rem 2rem; border-radius: 24px; border: 1px solid rgba(0,0,0,0.05); }
 
-        /* --- Footer --- */
-        .footer { background: var(--dark); color: #94a3b8; padding: 4rem 8% 2rem; }
+        /* --- Footer (GERİ GELDİ) --- */
+        .footer { background: var(--dark); color: #94a3b8; padding: 6rem 8% 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; margin-bottom: 4rem; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; display: block; text-decoration: none; }
+        .footer-logo span { color: var(--primary); }
+        .footer-col h4 { color: white; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col ul li a { color: #94a3b8; text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary); }
         .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
 
         @media (max-width: 1024px) { .hero { flex-direction: column; text-align: center; } .navbar nav { display: none; } }
@@ -87,7 +90,7 @@
         <div class="hero-text">
             <h1>Predict Risks.<br><span>Lower Claims.</span></h1>
             <p>Empowering insurance leaders with precise actuarial data. Mitigate losses with Crash Scope's predictive intelligence.</p>
-            <div style="display: flex; gap: 1rem;">
+            <div style="display: flex; gap: 1rem; justify-content: flex-start;">
                 <a href="dashboard.html" class="btn btn-primary">Get Risk Report</a>
                 <a href="pricing.html" class="btn" style="background: white; border: 1px solid #e2e8f0;">Enterprise Solutions</a>
             </div>
@@ -120,22 +123,10 @@
         <h3>Trusted by Global Leaders</h3>
         <div class="logos-container">
             <div class="logos-slide">
-                <span>AXON INSURANCE</span>
-                <span>METROGUARD</span>
-                <span>GLOBAL RE</span>
-                <span>ZENITH ASSURANCE</span>
-                <span>ALIANS GROUP</span>
-                <span>NEXUS UNDERWRITING</span>
-                <span>PRIME MUTUAL</span>
+                <span>AXON INSURANCE</span> <span>METROGUARD</span> <span>GLOBAL RE</span> <span>ZENITH ASSURANCE</span> <span>ALIANS GROUP</span> <span>NEXUS UNDERWRITING</span> <span>PRIME MUTUAL</span>
             </div>
             <div class="logos-slide">
-                <span>AXON INSURANCE</span>
-                <span>METROGUARD</span>
-                <span>GLOBAL RE</span>
-                <span>ZENITH ASSURANCE</span>
-                <span>ALIANS GROUP</span>
-                <span>NEXUS UNDERWRITING</span>
-                <span>PRIME MUTUAL</span>
+                <span>AXON INSURANCE</span> <span>METROGUARD</span> <span>GLOBAL RE</span> <span>ZENITH ASSURANCE</span> <span>ALIANS GROUP</span> <span>NEXUS UNDERWRITING</span> <span>PRIME MUTUAL</span>
             </div>
         </div>
     </section>
@@ -163,13 +154,41 @@
     </section>
 
     <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="footer-logo">Crash<span>Scope</span></a>
+                <p>Transforming complex accident data into actionable life-saving insights for the global insurance industry.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#">Actuarial Data</a></li>
+                    <li><a href="#">Claim Mitigation</a></li>
+                    <li><a href="pricing.html">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>📍 Financial District, Istanbul</li>
+                    <li>📧 info@crashscope.com</li>
+                    <li>📞 +90 (212) 555 0123</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter/X</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Crash Scope Insurance Intelligence. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // SAYAÇ SCRIPTI
         const counters = document.querySelectorAll('.counter');
         const speed = 200;
 
@@ -179,7 +198,6 @@
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText;
                     const inc = target / speed;
-
                     if (count < target) {
                         counter.innerText = Math.ceil(count + inc);
                         setTimeout(updateCount, 15);
@@ -202,6 +220,5 @@
 
         observer.observe(document.querySelector('.trust-box'));
     </script>
-
 </body>
 </html>
