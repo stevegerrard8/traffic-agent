@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Traffic Accidents SaaS</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    body { margin:0; font-family:Arial; background:#0f172a; color:#e5e7eb; }
+    .hidden { display:none; }
+    button { padding:8px 12px; cursor:pointer; }
+    .card { background:#111827; padding:15px; border-radius:8px; margin-bottom:15px; }
+    #map { height:260px; }
+  </style>
+</head>
+<body>
+
+<div id="login">
+  <h2>Login</h2>
+  <button onclick="login()">Demo Login</button>
+</div>
+
+<div id="app" class="hidden">
+  <h1>Dashboard</h1>
+
+  <div class="card">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <div class="card">
+    <div id="map"></div>
+  </div>
+</div>
+
+<script>
+let token = null;
+
+async function login() {
+  const res = await fetch("http://localhost:3000/login", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({
+      email:"demo@user.com",
+      password:"1234"
+    })
+  });
+
+  const data = await res.json();
+  token = data.token;
+
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+
+  loadChart();
+  loadMap();
+}
+
+async function loadChart() {
+  const res = await fetch("http://localhost:3000/stats/by-city", {
+    headers:{ Authorization: token }
+  });
+  const data = await res.json();
+
+  new Chart(document.getElementById("chart"), {
+    type:"bar",
+    data:{
+      labels:data.map(d=>d.city),
+      datasets:[{
+        data:data.map(d=>d.count)
+      }]
+    }
+  });
+}
+
+async function loadMap() {
+  const res = await fetch("http://localhost:3000/accidents/map", {
+    headers:{ Authorization: token }
+  });
+  const data = await res.json();
+
+  const map = L.map("map").setView([39,35],5);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+  data.forEach(a=>{
+    if(!a.lat) return;
+    L.circleMarker([a.lat,a.lng],{
+      radius:6,
+      color:a.result==="Ölümlü"?"red":"orange"
+    }).addTo(map).bindPopup(a.city+" - "+a.result);
+  });
+}
+</script>
+
+</body>
+</html>
