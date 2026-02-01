@@ -2,61 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Traffic Agent – Crash Analytics</title>
+  <title>Traffic Agent – Crash Analytics SaaS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <link rel="stylesheet" href="assets/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
+<body class="landing">
 
-<!-- LOGIN -->
-<div id="login-screen" class="login">
-  <h1>Traffic Agent</h1>
-  <p>Crash Analytics SaaS</p>
-  <button onclick="login()">Demo Login</button>
-</div>
+<div class="landing-wrapper">
+  <div class="landing-left">
+    <h1>Traffic Agent</h1>
+    <p class="subtitle">
+      AI-powered crash analytics for cities, insurers and researchers.
+    </p>
 
-<!-- APP -->
-<div id="app-screen" class="app hidden">
+    <ul class="features">
+      <li>📊 Nationwide accident insights</li>
+      <li>🗺️ High-risk zone detection</li>
+      <li>📈 Time & severity analytics</li>
+      <li>🏛️ Built for public & private sector</li>
+    </ul>
+  </div>
 
-  <aside class="sidebar">
-    <h2>🚦 Traffic Agent</h2>
-    <nav>
-      <a class="active">Dashboard</a>
-      <a>Accidents</a>
-      <a>Analytics</a>
-      <a>Pricing</a>
-    </nav>
-  </aside>
+  <div class="landing-right">
+    <div class="login-box">
+      <h2>Login</h2>
+      <p class="small">Demo access – no password required</p>
 
-  <main class="main">
-    <header class="header">
-      <h1>Dashboard</h1>
-      <button class="logout" onclick="logout()">Logout</button>
-    </header>
-
-    <section class="metrics">
-      <div class="card">
-        <h3>Total Accidents</h3>
-        <p>12,482</p>
-      </div>
-      <div class="card">
-        <h3>Fatal Crashes</h3>
-        <p>1,034</p>
-      </div>
-      <div class="card">
-        <h3>High Risk Zones</h3>
-        <p>87</p>
-      </div>
-    </section>
-
-    <section class="panel">
-      <h2>Accidents by Month</h2>
-      <canvas id="accidentChart"></canvas>
-    </section>
-  </main>
-
+      <button onclick="demoLogin()">Demo Login</button>
+    </div>
+  </div>
 </div>
 
 <script src="assets/app.js"></script>
